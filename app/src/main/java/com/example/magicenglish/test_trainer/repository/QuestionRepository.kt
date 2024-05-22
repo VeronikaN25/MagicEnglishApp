@@ -16,6 +16,7 @@ class QuestionRepository @Inject constructor(
 
         try {
             dataOrException.loading = true
+            //получение всех вопросов из api
             dataOrException.data = api.getAllQuestions()
             if (dataOrException.data.toString().isNotEmpty()) dataOrException.loading = false
         } catch (exception: Exception) {

@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -39,91 +41,90 @@ fun QuizHome(
     navController: NavController,
     viewModel: QuestionsViewModel = hiltViewModel()
 ) {
-
     val questionItems = viewModel.data.value.data?.toMutableList()
-    var currentQuestionIndex by remember { mutableStateOf(1) }
-    var questionItem = questionItems?.get(currentQuestionIndex - 1)
-
+    var correctAnswer by remember { mutableStateOf(0) }
+    var currentQuestionIndex by remember { mutableStateOf(viewModel.currentQuestionIndex) }
     val totalQuestion = questionItems?.size
 
-    var correctAnswer by remember { mutableStateOf(0) }
-    var showDialog by remember { mutableStateOf(false) }
-    var dialogMessage by remember { mutableStateOf("") }
-
     Surface(
-        modifier = Modifier
-            .fillMaxSize(),
+        modifier = Modifier.fillMaxSize(),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp)
-        ) {
-            Text(
-                text = "Question $currentQuestionIndex/$totalQuestion",
-                fontWeight = FontWeight.W900,
-                fontSize = 30.sp
+        val showIntermediateResult = remember { mutableStateOf(false) }
+
+        if (showIntermediateResult.value) {
+            IntermediateResult(
+                correctAnswers = correctAnswer,
+                onContinue = {
+                    showIntermediateResult.value = false
+                    viewModel.currentQuestionIndex = currentQuestionIndex + 1
+                    navController.popBackStack()
+                    navController.navigate(Screens.QuizHome.name)
+                }
             )
+        } else {
+            val questionItem = questionItems?.get(currentQuestionIndex - 1)
 
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Divider(
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                thickness = 1.dp,
-                color = MaterialTheme.colorScheme.background
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            if (questionItem != null) {
+                    .fillMaxSize()
+                    .padding(vertical = 50.dp, horizontal = 20.dp)
+            ) {
                 Text(
-                    text = questionItem.question,
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 20.sp
+                    text = "Question $currentQuestionIndex/$totalQuestion",
+                    fontWeight = FontWeight.W900,
+                    fontSize = 30.sp
                 )
-            }
 
-            Spacer(modifier = Modifier.height(100.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-            questionItem?.options?.forEach {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 20.dp)
-                        .height(50.dp)
-                        .background(Color.Transparent)
-                        .border(
-                            2.dp,
-                            DarkBlue,
-                            RoundedCornerShape(15.dp)
-                        )
-                        .clip(
-                            RoundedCornerShape(
-                                topStartPercent = 50,
-                                topEndPercent = 50,
-                                bottomEndPercent = 50,
-                                bottomStartPercent = 50
-                            )
-                        )
-                        .clickable {
-                            if (it == questionItem?.correctAnswer) correctAnswer++
-                            if (currentQuestionIndex == totalQuestion) {
-                                currentQuestionIndex = 0
-                                navController.navigate(Screens.QuizEnd.name + "/${correctAnswer}/${totalQuestion}")
-                                Log.d("Finish", "QuizHome: Complete")
-                                Log.d("Finish", "QuizHome: $correctAnswer")
-                            }
-                            currentQuestionIndex++
-                        },
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
+                Divider(
+                    modifier = Modifier.fillMaxWidth(),
+                    thickness = 1.dp,
+                    color = MaterialTheme.colorScheme.background
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                if (questionItem != null) {
                     Text(
-                        modifier = Modifier
-                            .padding(start = 17.dp),
-                        text = it,
-                        color = Color.Black,
+                        text = questionItem.question,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 20.sp
                     )
+                }
+
+                Spacer(modifier = Modifier.height(100.dp))
+
+                questionItem?.options?.forEach { option ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 20.dp)
+                            .height(50.dp)
+                            .background(Color.Transparent)
+                            .border(2.dp, Color.Blue, RoundedCornerShape(15.dp))
+                            .clip(RoundedCornerShape(50))
+                            .clickable {
+                                if (option == questionItem.correctAnswer) correctAnswer++
+                                if (currentQuestionIndex % 5 == 0 && currentQuestionIndex != totalQuestion) {
+                                    navController.navigate(Screens.IntermediateResult.name + "/${correctAnswer}/${currentQuestionIndex}")
+                                } else {
+                                    if (currentQuestionIndex == totalQuestion) {
+                                        navController.navigate(Screens.QuizEnd.name + "/${correctAnswer}/${totalQuestion}")
+                                    } else {
+                                        currentQuestionIndex++
+                                        viewModel.currentQuestionIndex = currentQuestionIndex
+                                    }
+                                }
+                            },
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            modifier = Modifier.padding(start = 17.dp),
+                            text = option,
+                            color = Color.Black,
+                        )
+                    }
                 }
             }
         }

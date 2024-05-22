@@ -1,4 +1,4 @@
-package com.example.magicenglish.log_in_screen
+package com.example.magicenglish.screen
 
 import android.annotation.SuppressLint
 import android.content.Intent

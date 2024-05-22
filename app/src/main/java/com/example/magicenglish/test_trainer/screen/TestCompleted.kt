@@ -88,7 +88,7 @@ fun TestCompleted(
                     ),
                     modifier = Modifier.height(56.dp),
                     onClick = {
-                        navController.navigate(Screens.QuizHome.name)
+                        navController.popBackStack(Screens.QuizHome.name, inclusive = false)
                     }
                 ) {
                     Text("Back to list", fontSize = 20.sp)

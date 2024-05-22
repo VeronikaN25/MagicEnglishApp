@@ -1,4 +1,4 @@
-package com.example.magicenglish.home_screen_
+package com.example.magicenglish.screen
 
 import android.annotation.SuppressLint
 import android.net.Uri
@@ -27,10 +27,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
-import com.example.magicenglish.test_trainer.screen.QuizHome
+import com.example.magicenglish.navigation.QuizHomeNavigation
 import com.example.magicenglish.ui.theme.Gold
 import com.example.magicenglish.ui.theme.Light
-import com.example.magicenglish.ui.theme.MediumBlue
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -82,7 +81,7 @@ fun ProfileScreen(
         },
         content = {
             Column(modifier = Modifier.padding(top=60.dp)) {
-                QuizHome(navController = navController)
+               QuizHomeNavigation()
             }
         }
     )

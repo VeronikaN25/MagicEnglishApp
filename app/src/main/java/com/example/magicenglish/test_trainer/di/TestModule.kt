@@ -11,10 +11,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+//зависимости для внедрения в приложение
 @Module
+//установка модуля
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+    //один экземпляр
     @Singleton
     @Provides
     fun provideQuestionApi(): QuestionApi {
@@ -25,6 +28,7 @@ object AppModule {
             .create(QuestionApi::class.java)
     }
 
+    //промеж звено
     @Singleton
     @Provides
     fun provideQuestionRepository(api: QuestionApi) = QuestionRepository(api)
