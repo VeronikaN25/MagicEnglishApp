@@ -1,0 +1,102 @@
+[
+  {
+    "question": "The books .... on the table in the living room",
+    "options": [
+      "is",
+      "are",
+      "Function…",
+      "----"
+    ],
+    "correct_answer": "are"
+  },
+  {
+    "question": "I don't have .... money for lunch",
+    "options": [
+      "some",
+      "few",
+      "any",
+      "little"
+    ],
+    "correct_answer": "any"
+  },
+  {
+    "question": "I have .... friends in America",
+    "options": [
+      "little",
+      "few",
+      "a little",
+      "a few"
+    ],
+    "correct_answer": "a few"
+  },
+  {
+    "question": "There are .... students",
+    "options": [
+      "a lot of",
+      "much",
+      "any",
+      "---"
+    ],
+    "correct_answer": "a lot of"
+  },
+  {
+    "question": "Do you know .... who has got blue hair?",
+    "options": [
+      "somebody",
+      "someone",
+      "anybody",
+      "something"
+    ],
+    "correct_answer": "anybody"
+  },
+  {
+    "question": "Linkin Park was a very popular band. .... knows it.",
+    "options": [
+      "Everyone",
+      "They",
+      "Someone",
+      "anybody"
+    ],
+    "correct_answer": "Everyone"
+  },
+  {
+    "question": "I .... studied Chinese for five years.",
+    "options": [
+      "having",
+      "has",
+      "have",
+      "had"
+    ],
+    "correct_answer": "have"
+  },
+  {
+    "question": "We'll find a hotel .... we arrive in Jakarta",
+    "options": [
+      "when",
+      "while",
+      "until",
+      "what"
+    ],
+    "correct_answer": "when"
+  },
+  {
+    "question": "When we arrive in Los Angeles we'll need to rest, because we .... about 800 miles.",
+    "options": [
+      "will be driving",
+      "will have driven",
+      "will drive",
+      "will"
+    ],
+    "correct_answer": "will be driving"
+  },
+  {
+    "question": "Lisa and I .... sick yesterday.",
+    "options": [
+      "am",
+      "are",
+      "were",
+      "is"
+    ],
+    "correct_answer": "were"
+  }
+]

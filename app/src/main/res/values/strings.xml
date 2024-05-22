@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MagicEnglish</string>
+    <string name="web_client_id">452648753760-ldmtv771sfhrc4o0jba45l2pb9uc09og.apps.googleusercontent.com</string>
+    <string name="home">home</string>
+    <string name="profile">profile</string>
+</resources>

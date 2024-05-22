@@ -1,0 +1,65 @@
+[versions]
+agp = "8.2.2"
+kotlin = "1.9.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+lifecycleRuntimeKtx = "2.7.0"
+activityCompose = "1.9.0"
+composeBom = "2024.05.00"
+
+navigationVersion="2.7.7"
+
+lifecycleVersion= "2.7.0"
+
+
+iconsVersion="1.6.7"
+
+
+googleGmsGoogleServices = "4.4.1"
+firebaseAuth = "23.0.0"
+playServicesAuth = "21.1.1"
+lifecycleRuntimeComposeAndroid = "2.8.0"
+
+[libraries]
+
+
+androidx-navigation-fragment-compose = { group = "androidx.navigation" , name = "navigation-fragment-ktx",version.ref="navigationVersion"}
+androidx-navigation-ktx = { group = "androidx.navigation" , name = "navigation-ui-ktx",version.ref="navigationVersion"}
+androidx-navigation-compose = { group = "androidx.navigation" , name = "navigation-compose",version.ref="navigationVersion"}
+androidx-navigation-features = { group = "androidx.navigation" , name = "navigation-dynamic-features-fragment",version.ref="navigationVersion"}
+
+androidx-viewmodel-lifecycle-ktx={group="androidx.lifecycle",name="lifecycle-viewmodel-ktx",version.ref="lifecycleVersion"}
+androidx-viewmodel-lifecycle-compose={group="androidx.lifecycle",name="lifecycle-viewmodel-compose",version.ref="lifecycleVersion"}
+
+
+androidx-icons-core={group="androidx.compose.material",name="material-icons-core",version.ref="iconsVersion"}
+androidx-icons-extended={group="androidx.compose.material",name="material-icons-extended",version.ref="iconsVersion"}
+
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version = "1.6.7" }
+androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
+androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+
+
+androidx-navigation={id="androidx.navigation.safeargs",version.ref="navigationVersion"}
+google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }

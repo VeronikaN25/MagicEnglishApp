@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "452648753760",
+    "project_id": "magicenglishapp-43e63",
+    "storage_bucket": "magicenglishapp-43e63.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452648753760:android:ace26e857813c6133c0105",
+        "android_client_info": {
+          "package_name": "com.example.magicenglish"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOw3Alau5-vehWiN4cjwa2QKSxJeNYhIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
